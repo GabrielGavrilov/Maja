@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Maja">
-    <output-path>$PROJECT_DIR$/out/artifacts/Maja</output-path>
-    <root id="archive" name="Maja.jar">
-      <element id="module-output" name="Maja" />
-    </root>
-  </artifact>
-</component>
