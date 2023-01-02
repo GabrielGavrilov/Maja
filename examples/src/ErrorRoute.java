@@ -17,7 +17,7 @@ public class ErrorRoute {
            try {
 
                if(request.method().equals("GET")) {
-                   response.send("src/pages/index.html");
+                   response.render("src/pages/index.html");
                }
 
            } catch(Exception e) {
@@ -30,7 +30,7 @@ public class ErrorRoute {
             try {
 
                 if(request.method().equals("GET")) {
-                    response.send("src/pages/contact.html");
+                    response.render("src/pages/contact.html");
                 }
 
             } catch(Exception e) {
@@ -43,7 +43,7 @@ public class ErrorRoute {
             try {
 
                 if(request.method().equals("GET")) {
-                    response.send("src/pages/404.html");
+                    response.render("src/pages/404.html");
                 }
 
             } catch(Exception e) {

@@ -4,20 +4,20 @@ import Maja.MajaResponse;
 
 import java.io.IOException;
 
-public class RoutingAndRenderingHTML {
+public class HelloWorld {
     public static void main(String[] args) throws IOException {
 
-        // Initializes Maja.
+        // Initialized Maja.
         Maja maja = new Maja();
-        MajaRequest request = new MajaRequest(); // We use the MajaRequest class to get request information.
-        MajaResponse response = new MajaResponse(); // We use the MajaResponse class to respond to the request.
+        MajaRequest request = new MajaRequest();
+        MajaResponse response = new MajaResponse();
 
         // Index route.
         maja.route("/", request, response, ()-> {
             try {
 
-                if(request.method().equals("GET")) { // If it's a GET method.
-                    response.render("src/pages/index.html"); // Then respond with the index.html file.
+                if(request.method().equals("GET")) {
+                    response.send("<h2>Hello, World!</h2>");
                 }
 
             } catch(Exception e) {

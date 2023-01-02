@@ -17,7 +17,7 @@ public class GettingPostMethodData {
             try {
 
                 if(request.method().equals("GET")) {
-                    response.send("src/pages/form.html");
+                    response.render("src/pages/form.html");
                 }
 
                 else if(request.method().equals("POST")) {
@@ -35,7 +35,7 @@ public class GettingPostMethodData {
                         System.out.println(payload[i]);
                     }
 
-                    response.send("src/pages/thankyou.html");
+                    response.render("src/pages/thankyou.html");
                 }
 
             } catch (Exception e) {
