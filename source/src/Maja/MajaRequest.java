@@ -32,7 +32,7 @@ public class MajaRequest extends Maja {
     // Purpose: Returns client's post payload.
     //-------------------------------------------------------------------
     public String[] payload() {
-        String rawPayload = Maja.clientRequest.get(16);
+        String rawPayload = Maja.clientPayload;
         String[] payload = rawPayload.split("&");
         return payload;
     }

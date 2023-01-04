@@ -30,8 +30,8 @@ public class MajaClient extends Maja {
         while(buff.ready()) {
             payload.append((char) buff.read());
         }
-        socketRequest.add(payload.toString());
 
+        Maja.clientPayload = payload.toString();
         return socketRequest;
     }
 

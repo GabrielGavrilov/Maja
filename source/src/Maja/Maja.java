@@ -22,6 +22,7 @@ public class Maja {
     static Socket socket;
     static MajaClient client;
     static ArrayList<String> clientRequest;
+    static String clientPayload = "";
 
     //-------------------------------------------------------------------
     // Purpose: Starts the Maja web server.
