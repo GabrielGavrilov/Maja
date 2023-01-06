@@ -14,5 +14,6 @@ public class MajaSettings extends Maja {
     protected static boolean debug = false;
     protected static ArrayList<String> routes = new ArrayList<>();
     protected static ArrayList<Runnable> routeCallbacks = new ArrayList<>();
+    protected static String staticFolder = "";
 
 }

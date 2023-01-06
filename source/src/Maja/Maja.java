@@ -9,11 +9,14 @@ package Maja;
 //
 //=======================================================================
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Maja {
@@ -43,6 +46,7 @@ public class Maja {
                 client = new MajaClient();
                 clientRequest = client.connect(socket);
                 handleRoutes();
+                handleStaticRoutes();
 
             } catch(Exception e) {
                 System.out.println(e);
@@ -51,7 +55,14 @@ public class Maja {
     }
 
     //-------------------------------------------------------------------
-    // Purpose: Adds a get route to the web server
+    // Purpose: Sets the static folder for Maja.
+    //-------------------------------------------------------------------
+    public static void setStatic(String location) {
+        MajaSettings.staticFolder = location;
+    }
+
+    //-------------------------------------------------------------------
+    // Purpose: Adds a route to the web server
     //-------------------------------------------------------------------
     public void route(String route, MajaRequest request, MajaResponse response, Runnable callback) {
         int temp = 0;
@@ -96,8 +107,27 @@ public class Maja {
 
     }
 
-    public static void debug(boolean debugMode) {
-        MajaSettings.debug = debugMode;
+    //-------------------------------------------------------------------
+    // Purpose:
+    //-------------------------------------------------------------------
+    private static void handleStaticRoutes() throws Exception {
+        Path staticFilePath = Path.of(MajaSettings.staticFolder + client.getClientRoute(clientRequest));
+        File staticFile = new File(staticFilePath.toUri());
+        boolean exists = staticFile.exists();
+
+        if(exists && !staticFilePath.equals(MajaSettings.staticFolder)) {
+            byte[] fileBytes = Files.readAllBytes(staticFilePath);
+            OutputStream socketOutput = socket.getOutputStream();
+
+            socketOutput.write("HTTP/1.1 200 OK\r\n".getBytes());
+            socketOutput.write(("ContentType: text/html\r\n").getBytes());
+            socketOutput.write("\r\n".getBytes());
+            socketOutput.write(fileBytes);
+            socketOutput.write("\r\n\r\n".getBytes());
+            socketOutput.flush();
+            Maja.socket.close();
+        }
+
     }
 
 }
