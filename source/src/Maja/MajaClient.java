@@ -31,6 +31,12 @@ public class MajaClient extends Maja {
             payload.append((char) buff.read());
         }
 
+        if(MajaSettings.debug) {
+            for(int i = 0; i < socketRequest.size(); i++) {
+                System.out.println(socketRequest.get(i));
+            }
+        }
+
         Maja.clientPayload = payload.toString();
         return socketRequest;
     }

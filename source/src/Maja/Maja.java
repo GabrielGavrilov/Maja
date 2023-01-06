@@ -71,7 +71,7 @@ public class Maja {
     //-------------------------------------------------------------------
     private static void handleRoutes() {
         String clientRoute = client.getClientRoute(clientRequest);
-        int position = 0;
+        int position = -1;
         for(int i = 0; i < MajaSettings.routes.size(); i++) {
             if(clientRoute.equals(MajaSettings.routes.get(i))) {
                 position = i;
@@ -81,7 +81,7 @@ public class Maja {
             }
         }
 
-        if(position >= 0) {
+        if(position != -1) {
             MajaSettings.routeCallbacks.get(position).run();
         }
         else {
@@ -94,6 +94,10 @@ public class Maja {
             }
         }
 
+    }
+
+    public static void debug(boolean debugMode) {
+        MajaSettings.debug = debugMode;
     }
 
 }
