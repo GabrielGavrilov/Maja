@@ -1,3 +1,4 @@
+# Todo for Maja
 - [v] Add static files such as css
 - [] Redirects
 - [] JSON Scraping
