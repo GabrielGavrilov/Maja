@@ -4,4 +4,5 @@
 - [] JSON Scraping
 - [] IP Locations
 - [] Clean up
+- [] Add README.md
 - [] Add parameters
